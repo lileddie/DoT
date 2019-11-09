@@ -22,13 +22,13 @@ There are several DNS over TLS providers out there, in our example we will use C
 Rather than leaving it up to the browser, you can build a DNS forwarder that encrypts all your DNS traffic.  For our example we will be using an Ubuntu 18.04 virtual machine.
 
 * Install unbound
-`sudo apt update`
+`sudo apt update`  
 `sudo apt install unbound -y`
 * disable resolved
-`sudo systemctl stop systemd-resolved`
+`sudo systemctl stop systemd-resolved`  
 `sudo systemctl disable systemd-resolved`
 * configure unbound
-`vi /etc/unbound/unbound.conf`
+`vi /etc/unbound/unbound.conf`  
 ```
 server:
     interface: 0.0.0.0
@@ -54,7 +54,7 @@ From the Ubuntu server, verify using tcpdump, change ens3 to your local interfac
 </p>
 As you can see, the clear text DNS request is proxied from the Ubuntu server using TLS to Cloudflare's DNS servers.
 
-That's it!  Your requests are now encrypted between each client that is pointing to your Ubuntu server.
+That's it!  Your requests are now encrypted between your local Ubuntu server and Cloudflare's DNS servers.
 
 ## Should I use a VPN?
 This is a personal choice, if you are using HTTPS and DNS over TLS, all of your data will be encrypted and safe from snooping.  The ISP (or any other intermediary) may still be able to determine which domain/site you are visiting using reverse DNS (PTR records map IP addresses to domain names).  If this is a concern, a VPN might be a better solution.
