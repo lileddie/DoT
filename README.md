@@ -1,4 +1,4 @@
-# fuck-comcast
+# DoT to secure DNS
 Tunnel DNS requests using TLS to thwart DNS snooping
 
 ## DNS allows others to view the websites you are visiting
